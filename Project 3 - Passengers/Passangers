@@ -1,0 +1,97 @@
+
+public class Passengers {
+	public String firstName;
+	public String lastName;
+	public String dateOfBirth;
+	public String boardingCategory;
+	public int priority;
+
+	//Overloaded method
+	public Passengers() {
+		this.firstName = "";
+		this.lastName = "";
+		this.dateOfBirth = "";
+		this.boardingCategory = "";
+		this.priority = 0;
+	}
+	
+	//Overloaded method to allow user to set values
+	public Passengers(String fName, String LName, String DOB, String boardingCat, int priority){
+		this.firstName = fName;
+		this.lastName = LName;
+		this.dateOfBirth = DOB;
+		this.boardingCategory = boardingCat;
+		this.priority = priority;
+	}
+
+	// Method to set the first name
+	public void setFirstName(String fName) {
+		this.firstName = fName;
+	}
+
+	// Method to set the last name
+	public void setLastName(String lName) {
+		this.lastName = lName;
+	}
+
+	// Method to set the date of birth
+	public void setDateOfBirth(String DOB) {
+		this.dateOfBirth = DOB;
+	}
+
+	// Method to set boarding category
+	public void setBoardingCategory(String bCategory) {
+		switch (bCategory) {
+		case "Traveling with infant":
+			this.priority = 1;
+			break;
+
+		case "Elderly":
+			this.priority = 5;
+			break;
+
+		case "Armed Services":
+			this.priority = 10;
+			break;
+		case "First Class":
+			this.priority = 15;
+			break;
+
+		case "Economy":
+			this.priority = 20;
+			break;
+		}
+		this.boardingCategory = bCategory;
+	}
+
+	// Method to set priority
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+
+	// Method to get first name
+	public String getFirstName() {
+		return firstName;
+	}
+
+	// Method to get last name
+	public String getLastName() {
+		return lastName;
+	}
+
+	// Method to get the date of birth
+	public String getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	// Method to get boarding category
+	public String getBoardingCategory() {
+		return boardingCategory;
+	}
+
+	// Method to get passenger priority
+	public int getPriority() {
+		return priority;
+	}
+
+}
