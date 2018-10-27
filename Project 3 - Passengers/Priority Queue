@@ -1,0 +1,68 @@
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.PriorityQueue;
+
+public class PriorityQueueSim {
+
+	public void Simulation() {
+		//Create comparator method to arrange the elements based on the priority
+		//if the priority of passenger first is less than the passenger second then passenger first
+		//should precede passenger second
+		//Examples on how to create the method obtained from:
+		//http://www.geeksforgeeks.org/comparator-interface-java/
+		Comparator<Passengers> comp = new Comparator<Passengers>() {
+			@Override
+			public int compare(Passengers first, Passengers second) {
+				// TODO Auto-generated method stub
+				if (first.getPriority() <= second.getPriority()) {
+					return -1;
+				} else if (first.getPriority() == second.getPriority()) {
+					return 0;
+				} else
+					return 1;
+			}
+
+		};
+		
+		// Create a priority queue of size 16 with compare method
+		PriorityQueue<Passengers> que = new PriorityQueue<Passengers>(16, comp);
+
+		// create the passengers
+		// �Traveling with infant� is priority 1, �Elderly� is priority 5,
+		// �Armed Services� is priority 10,
+		// �First Class� is priority 15 and �Economy class� is priority 20
+		Passengers one = new Passengers("Garalt", "Rivia", "06/13/1307", "Armed Services", 10);
+		Passengers two = new Passengers("Ciri", "Nov", "10/23/1957", "First Class", 15);
+		Passengers three = new Passengers("Triss", "Merigold", "06/13/1817", "Economy", 20);
+		Passengers four = new Passengers("Yennefer", "Rivia", "06/13/1807", "Armed Services", 10);
+		Passengers five = new Passengers("Keira", "Metz", "12/11/1813", "Traveling with infant", 1);
+		Passengers six = new Passengers("Emhyr", "Emreis", "03/01/1834", "Armed Services", 10);
+		Passengers seven = new Passengers("Letho", "Zed", "10/15/1887", "Economy", 20);
+		Passengers eight = new Passengers("Lambert", "Crone", "02/23/1927", "Elderly", 5);
+		Passengers nine = new Passengers("Eredin", "Glas", "04/06/1799", "First Class", 15);
+		Passengers ten = new Passengers("Philippa", "Eihart", "03/03/1900", "Elderly", 5);
+
+		//Add passengers onto the priority queue
+		que.add(one);
+		que.add(two);
+		que.add(three);
+		que.add(four);
+		que.add(five);
+		que.add(six);
+		que.add(seven);
+		que.add(eight);
+		que.add(nine);
+		que.add(ten);
+
+		System.out.println("Boarding order of current passengers:");
+		// Create iterator to traverse the priority queue
+		//Ideas on how to iterate queue obtained from:
+		//https://stackoverflow.com/questions/8129122/how-to-iterate-over-a-priorityqueue
+		Iterator<Passengers> iterate = que.iterator();
+		while (iterate.hasNext()) {
+			Passengers temp = iterate.next();
+			System.out.println(temp.getFirstName() + " " + temp.getLastName() + ", " + temp.getDateOfBirth() + ", "
+					+ temp.getBoardingCategory() + ", " + temp.getPriority());
+		}
+	}
+}
